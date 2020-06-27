@@ -14,9 +14,4 @@ jobs:
           host: ${{secrets.SSH_HOST}}
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
-          script: |
-            mkdir -p ~/my-express-app/
-            cd ~/my-express-app/
-            git clone .
-            npm install
-            pm2 start app.js
+          script: ~/deploy.sh
