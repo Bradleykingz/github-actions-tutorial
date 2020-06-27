@@ -1,16 +1,23 @@
-name: Hello World
+name: Deploy application
 
 on:
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
 
 jobs:
-  Echo:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout source code
-        uses: actions/checkout@v2
-      - name: Echo Hello World
-        run: echo "Hello World"
+      - name: Deploy NodeJS app
+        uses: appleboy/ssh-action@v0.1.2
+        with:
+          host: ${{secrets.SSH_HOST}}
+          username: ${{ secrets.SSH_USERNAME }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          script: |
+            mkdir -p ~/my-express-app/
+            cd ~/my-express-app/
+            git clone https://github.com/Bradleykingz/github-actions-tutorial
+            cd github-actions-tutorial
+            npm install
+            pm2 start app.js
