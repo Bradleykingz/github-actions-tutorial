@@ -7,9 +7,10 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
+  Echo:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
       - name: Checkout source code
+        uses: actions/checkout@v2
+      - name: Echo Hello World
         run: echo "Hello World"
