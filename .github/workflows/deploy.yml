@@ -20,4 +20,4 @@ jobs:
             git clone https://github.com/Bradleykingz/github-actions-tutorial app
             cd app
             ~/.nvm/versions/node/v12.14.0/bin/npm install
-            pm2 start app.js
+            ~/.nvm/versions/node/v12.14.0/bin/pm2 start app.js
